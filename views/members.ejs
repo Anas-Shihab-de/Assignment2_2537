@@ -1,0 +1,22 @@
+<%- include('templates/header') %>
+
+<h2 class="mb-4">Welcome <%= name %></h2>
+
+<div class="row">
+  <% images.forEach(image => { %>
+    <div class="col-12 col-sm-6 col-md-4 mb-4">
+      <img
+        src="/<%= image %>"
+        class="img-fluid rounded shadow"
+        alt="User Image"
+      />
+    </div>
+  <% }) %>
+</div>
+<% if (role === "admin") { %>
+  <a href="/admin"><button>Open Admin Panel</button></a>
+<% } %>
+
+<a href="/logout" class="btn btn-danger">Logout</a>
+
+<%- include('templates/footer') %>

@@ -1,0 +1,33 @@
+<%- include('templates/header') %>
+
+<h1>Admin Panel</h1>
+
+<table cellpadding="10">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Action</th>
+  </tr>
+
+  <% users.forEach(function(user) { %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.role || "user" %></td>
+      <td>
+        <% if (user.role == "admin") { %>
+          <a href="/remove-admin/<%= user._id %>">Demote</a>
+        <% } else { %>
+          <a href="/make-admin/<%= user._id %>">Promote</a>
+        <% } %>
+      </td>
+    </tr>
+  <% }) %>
+
+</table>
+
+<br>
+<a href="/members">Back</a>
+
+<%- include('templates/footer') %>
